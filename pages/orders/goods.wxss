@@ -1,0 +1,7 @@
+/* pages/orders/goods.wxss */
+.wrap_goods view {
+  padding-left: 10%;
+}
+.wrap_goods button {
+ margin: 10% 30% 0% 30%;
+}

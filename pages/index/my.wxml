@@ -1,0 +1,5 @@
+<!--pages/index/my.wxml-->
+<view class="btn-area">
+  <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">洗涤方式</navigator>
+  <navigator url="../../redirect/redirect/redirect?title=redirect" open-type="redirect" hover-class="other-navigator-hover">产品介绍</navigator>
+</view>

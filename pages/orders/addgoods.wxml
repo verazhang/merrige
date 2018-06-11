@@ -1,0 +1,22 @@
+<!--pages/orders/addgoods.wxml-->
+<form>
+  <view>
+    <label>功用：</label>
+    <button>纤体</button>
+    <button>蚕茧</button>
+    <button>能量</button>
+  </view>
+  <view>
+    <label>颜色：</label>
+    <button>黑色</button>
+    <button>肤色</button>
+  </view>
+  <view>
+    <label>型号：</label>
+    <button>M</button>
+    <button>L</button>
+    <button>XL</button>
+    <button>XXL</button>
+    <button>XXXL</button>
+  </view>
+</form>

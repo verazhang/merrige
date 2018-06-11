@@ -1,0 +1,43 @@
+<!--pages/orders/order.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view>
+    <view>客户：</view>
+    <input placeholder="下单人名称" />
+  </view>
+  <view>
+    <view>电话：</view>
+    <input name="input" placeholder="联系电话" />
+  </view>
+  <view>
+    <view>收款：</view>
+    <input name="input" placeholder="收取金额" />￥
+  </view>
+  <view>
+    <view>支付方式：</view>
+    <button>微信</button>
+    <button>支付宝</button>
+    <button>现金</button>
+    <button>其他</button>
+  </view>
+  <view>
+    <view>规格</view>
+    <button>肤色</button>
+    <button>黑色</button>
+    <button>蚕茧</button>
+    <button>纤体</button>
+    <button>能量</button>
+    <button>M</button>
+    <button>L</button>
+    <button>XL</button>
+    <button>XXL</button>
+    <button>XXXL</button>
+  </view>
+  <view>
+    <view class="section__title">备注：</view>
+    <textarea placeholder="备注信息"></textarea>
+  </view>
+  <view>
+    <button>取消</button>
+    <button>保存</button>
+  </view>
+</form>

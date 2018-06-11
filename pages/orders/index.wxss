@@ -1,0 +1,6 @@
+/* pages/orders/index.wxss */
+.middle-button {
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 20%;
+}

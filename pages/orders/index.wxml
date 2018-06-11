@@ -1,0 +1,10 @@
+<!--pages/orders/index.wxml-->
+<button bindtap="toCreateOrder" class="middle-button">{{btnAddName}}</button>
+<!-- 
+<navigator url="/pages/orders/order?title=navigate">{{btnAddName}}</navigator>
+<navigator url="/pages/orders/order?title=redirect" open-type="redirect" hover-class="other-navigator-hover">在当前页打开</navigator>
+
+<navigator url="/pages/orders/order" open-type="switchTab" hover-class="other-navigator-hover">切换 Tab</navigator>
+
+<navigator target="miniProgram" open-type="navigate" app-id="" path="" extra-data="" version="release">打开绑定的小程序</navigator>
+-->

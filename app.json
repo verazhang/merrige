@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/orders/index",
+    "pages/orders/order",
+    "pages/index/index",
+    "pages/index/my",
+    "pages/logs/logs",
+    "pages/orders/goods",
+    "pages/orders/addgoods",
+    "pages/index/common",
+    "pages/reports/stat"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Merrige",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "selectedColor": "red",
+    "list": [{
+      "pagePath": "pages/orders/index",
+      "text": "添新单"
+    },
+    {
+      "pagePath": "pages/orders/goods",
+      "text": "上新货"
+    },
+    {
+      "pagePath": "pages/index/common",
+      "text": "常用语"
+    },
+    {
+      "pagePath": "pages/index/my",
+      "text": "我的"
+    }]
+  }
+}
