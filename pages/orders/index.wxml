@@ -1,5 +1,8 @@
 <!--pages/orders/index.wxml-->
-<button bindtap="toCreateOrder" class="middle-button">{{btnAddName}}</button>
+<view class="button-sp-area">
+  <button class="weui-btn" type="primary" plain="true" bindtap="toCreateOrder">{{btnAddName}}</button>
+</view>
+
 <!-- 
 <navigator url="/pages/orders/order?title=navigate">{{btnAddName}}</navigator>
 <navigator url="/pages/orders/order?title=redirect" open-type="redirect" hover-class="other-navigator-hover">在当前页打开</navigator>

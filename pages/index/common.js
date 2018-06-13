@@ -5,14 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    title: "",
+    lastUpdateTime: "2018年6月7日 13:23",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    if (options && options.title) {
+      this.setData({title:options.title});
+    }
   },
 
   /**

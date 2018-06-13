@@ -27,10 +27,6 @@
       "text": "上新货"
     },
     {
-      "pagePath": "pages/index/common",
-      "text": "常用语"
-    },
-    {
       "pagePath": "pages/index/my",
       "text": "我的"
     }]

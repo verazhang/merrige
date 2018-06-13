@@ -1,11 +1,18 @@
 // pages/orders/addgoods.js
-Page({
+var app = getApp(); 
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-  
+    radioItems: app.globalData.radioItems,
+    
+    usages: app.globalData.usages,
+    usageIndex: app.globalData.usageIndex,
+
+    sizes: app.globalData.sizes,
+    sizeIndex: app.globalData.sizeIndex,
   },
 
   /**
@@ -62,5 +69,31 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+
+    var radioItems = this.data.radioItems;
+    for (var i = 0, len = radioItems.length; i < len; ++i) {
+      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
+
+    this.setData({
+      radioItems: radioItems
+    });
+  },
+  bindUsageChange: function (e) {
+    console.log('picker account 发生选择改变，携带值为', e.detail.value);
+
+    this.setData({
+      usageIndex: e.detail.value
+    })
+  },
+  bindSizeChange: function (e) {
+    console.log('picker account 发生选择改变，携带值为', e.detail.value);
+
+    this.setData({
+      sizeIndex: e.detail.value
+    })
+  },
 })

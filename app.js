@@ -34,6 +34,15 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    radioItems: [
+      { name: '肤色', value: '0', checked: true },
+      { name: '黑色', value: '1' }
+    ],
+    usages: ["蚕茧", "纤体", "能量"],
+    usageIndex: 0,
+
+    sizes: ["M", "L", "XL", "XXL", "XXXL", "XXXXL"],
+    sizeIndex: 0,
   }
 })

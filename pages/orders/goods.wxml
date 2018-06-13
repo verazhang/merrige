@@ -1,10 +1,42 @@
 <!--pages/orders/goods.wxml-->
-<view class="wrap_goods">
-  <view><label>总支出：{{totalPrice}}￥</label></view>
-  <view><label>库存共：{{totalGoods}}套</label></view>
-  <view><label>黑色：{{totalGoods}}套</label></view>
-  <view><label>肤色：{{totalGoods}}套</label></view>
-  <view><label>M：{{totalGoods}}套</label></view>
-  <view><label>纤体：{{totalGoods}}套</label></view>
-  <button bindtap="addGoods">添加</button>
+<view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">总支出</view>
+      <view class="weui-cell__ft">{{totalPrice}}￥</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">总库存</view>
+      <view class="weui-cell__ft">{{totalGoods}}套</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">肤色</view>
+      <view class="weui-cell__ft">{{totalGoods}}套</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">黑色</view>
+      <view class="weui-cell__ft">{{totalGoods}}套</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">M</view>
+      <view class="weui-cell__ft">{{totalGoods}}套</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">纤体</view>
+      <view class="weui-cell__ft">{{totalGoods}}套</view>
+    </view>
+  </view>
+</view>
+<view class="button-sp-area">
+  <button class="weui-btn" type="primary" plain="true" bindtap="addGoods">添加</button>
 </view>
