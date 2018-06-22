@@ -63,14 +63,4 @@ Page({
   onShareAppMessage: function () {
   
   },
-
-  /**
-  * 添加货物
-  */
-  addGoods: function () {
-    // 跳转到 addgoods.wxml页面    
-    wx.navigateTo({
-      url: '/pages/orders/addgoods'
-    })
-  }
 })

@@ -7,23 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    payments: ["微信", "支付宝", "现金", "其他"],
+    showTopTips: false,
+
+    payments: [
+      {"en": "weixin", "cn": "微信"}, 
+      {"en": "zhifubao", "cn": "支付宝"}, 
+      {"en": "cash", "cn": "现金"}, 
+      {"en": "other", "cn": "其他"}
+    ],
     paymentIndex: 0,
 
-    radioItems: app.globalData.radioItems,
+    colorItems: app.globalData.colorItems,
 
     usages: app.globalData.usages,
     usageIndex: app.globalData.usageIndex,
 
     sizes: app.globalData.sizes,
     sizeIndex: app.globalData.sizeIndex,
+
+    addRoute: "order/create",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**
@@ -84,13 +93,13 @@ Page({
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
-    var radioItems = this.data.radioItems;
+    var radioItems = this.data.colorItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
     }
 
     this.setData({
-      radioItems: radioItems
+      colorItems: radioItems
     });
   },
   bindUsageChange: function (e) {
@@ -118,4 +127,21 @@ Page({
       });
     }, 3000);
   },
+  formSubmit: function (e) {
+    // var that = this;
+    var formData = e.detail.value; 
+    formData.detail = { "color": formData.color, "usage": formData.usage, "size": formData.size};
+    //console.log(formData);
+    wx.request({
+      method: "POST",
+      url: app.globalData.domain + this.data.addRoute, //仅为示例，并非真实的接口地址
+      data: formData,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    });
+  }
 })

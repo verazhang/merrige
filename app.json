@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/product/list",
     "pages/orders/index",
     "pages/orders/order",
     "pages/index/index",
@@ -9,6 +10,7 @@
     "pages/orders/addgoods",
     "pages/index/common",
     "pages/reports/stat"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -26,6 +28,11 @@
       "pagePath": "pages/orders/goods",
       "text": "上新货"
     },
+    {
+      "pagePath": "pages/product/list",
+      "text": "查货"
+    },
+    
     {
       "pagePath": "pages/index/my",
       "text": "我的"

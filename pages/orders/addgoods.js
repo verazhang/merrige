@@ -6,13 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    radioItems: app.globalData.radioItems,
+    colorItems: app.globalData.colorItems,
     
     usages: app.globalData.usages,
     usageIndex: app.globalData.usageIndex,
 
     sizes: app.globalData.sizes,
     sizeIndex: app.globalData.sizeIndex,
+    
+    addRoute: "goods/create",
+    codehref: "",
   },
 
   /**
@@ -73,13 +76,13 @@ Page({
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
-    var radioItems = this.data.radioItems;
+    var radioItems = this.data.colorItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
     }
 
     this.setData({
-      radioItems: radioItems
+      colorItems: radioItems
     });
   },
   bindUsageChange: function (e) {
@@ -96,4 +99,30 @@ Page({
       sizeIndex: e.detail.value
     })
   },
+  formSubmit: function (e) {
+    var formData = e.detail.value; 
+    console.log(formData);
+    wx.request({
+      method: "POST",
+      url: app.globalData.domain + this.data.addRoute,
+      data: formData,
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    });
+  },
+  scanCode: function() {
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        console.log(res);
+        this.setData({
+          codehref: res.result
+        });
+      }
+    });
+  }
 })

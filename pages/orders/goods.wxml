@@ -1,42 +1,35 @@
 <!--pages/orders/goods.wxml-->
-<view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">总支出</view>
-      <view class="weui-cell__ft">{{totalPrice}}￥</view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">总库存</view>
-      <view class="weui-cell__ft">{{totalGoods}}套</view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">肤色</view>
-      <view class="weui-cell__ft">{{totalGoods}}套</view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">黑色</view>
-      <view class="weui-cell__ft">{{totalGoods}}套</view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">M</view>
-      <view class="weui-cell__ft">{{totalGoods}}套</view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">纤体</view>
-      <view class="weui-cell__ft">{{totalGoods}}套</view>
-    </view>
+<view class="page__bd">
+  <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">总库存</view>
+              <view class="weui-form-preview__value_in-hd">{{totalGoods}}套</view>
+          </view>
+      </view>
+      <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">总支出</view>
+              <view class="weui-form-preview__value_in-hd">¥{{totalPrice}}</view>
+          </view>
+      </view>
+      <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">肤色</view>
+              <view class="weui-form-preview__value">xxx套</view>
+          </view>
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">黑色</view>
+              <view class="weui-form-preview__value">xxx套</view>
+          </view>
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">M</view>
+              <view class="weui-form-preview__value">xxx套</view>
+          </view>
+      </view>
+      <view class="weui-form-preview__ft">
+          <navigator url="/pages/orders/addgoods" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">添加</navigator>
+      </view>
   </view>
 </view>
-<view class="button-sp-area">
-  <button class="weui-btn" type="primary" plain="true" bindtap="addGoods">添加</button>
-</view>
+

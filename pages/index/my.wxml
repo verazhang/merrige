@@ -10,10 +10,3 @@
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator>
 </view>
-
-<view class="weui-cells weui-cells_after-title">
-  <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">检查新版本</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access">v1.0</view>
-  </navigator>
-</view>

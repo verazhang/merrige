@@ -1,11 +1,11 @@
 <!--pages/orders/addgoods.wxml-->
-<form>
+<form bindsubmit="formSubmit">
   <view class="weui-cells__title">颜色</view>
   <view class="weui-cells weui-cells_after-title">
     <radio-group bindchange="radioChange">
-      <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+      <label class="weui-cell weui-check__label" wx:for="{{colorItems}}" wx:key="value">
+        <input style="display:none" disabled="true" name="color" wx:if="{{item.checked}}" value="{{item.name}}"/>
         <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
-
           <view class="weui-cell__bd">{{item.name}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
             <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
@@ -19,6 +19,7 @@
       <view class="weui-label">功用</view>
     </view>
     <view class="weui-cell__bd">
+      <input style="display:none" disabled="true" name="usage" value="{{usages[usageIndex]}}"/>
       <picker bindchange="bindUsageChange" value="{{usageIndex}}" range="{{usages}}">
           <view class="weui-select weui-select_in-select-after">{{usages[usageIndex]}}</view>
       </picker>
@@ -30,13 +31,39 @@
       <view class="weui-label">尺寸</view>
     </view>
     <view class="weui-cell__bd">
+      <input style="display:none" disabled="true" name="size" value="{{sizes[sizeIndex]}}"/>
       <picker bindchange="bindSizeChange" value="{{sizeIndex}}" range="{{sizes}}">
           <view class="weui-select weui-select_in-select-after">{{sizes[sizeIndex]}}</view>
       </picker>
     </view>
   </view>
+  <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell__hd">
+      <view class="weui-label">成本</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input name="cost" class="weui-input" placeholder="请输入成本价" />
+    </view>
+    <view class="weui-cell__ft">
+      <label style="width:2em">￥</label>
+    </view>
+  </view>
+  
+  <view class="weui-cell weui-cell_input weui-cell_vcode" wx:if="{{!codehref}}">
+    <view class="weui-cell__bd button-sp-area">
+      <button class="weui-btn" type="primary" plain="true" bindtap="scanCode">扫码</button>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input weui-cell_vcode" wx:if="{{codehref}}">
+    <view class="weui-cell__hd">
+      <view class="weui-label">二维地址</view>
+    </view>
+    <view class="weui-cell__bd">
+       <input name="codehref" value="{{codehref}}" /> 
+    </view>
+  </view>
 
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
   </view>
 </form>

@@ -1,11 +1,12 @@
 <!--pages/orders/order.wxml-->
 <form bindsubmit="formSubmit" bindreset="formReset">
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
   <view class="weui-cell weui-cell_input weui-cell_vcode">
     <view class="weui-cell__hd">
       <view class="weui-label">客户</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" placeholder="请输入下单人名称" />
+      <input name="name" class="weui-input" placeholder="请输入下单人名称" />
     </view>
   </view>
   <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -13,7 +14,7 @@
       <view class="weui-label">电话</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" placeholder="请输入联系电话" />
+      <input name="phone" class="weui-input" placeholder="请输入联系电话" />
     </view>
   </view>
   <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -21,20 +22,21 @@
       <view class="weui-label">收款</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" placeholder="请输入收取金额" />
+      <input name="price" class="weui-input" placeholder="请输入收取金额" />
     </view>
     <view class="weui-cell__ft">
       <label style="width:2em">￥</label>
     </view>
   </view>
 
-  <view class="weui-cell weui-cell_select">
+  <view class="weui-cell weui-cell_select">  
     <view class="weui-cell__hd weui-cell__hd_in-select-after">
       <view class="weui-label">支付方式</view>
     </view>
     <view class="weui-cell__bd">
-      <picker bindchange="bindPaymentChange" value="{{paymentIndex}}" range="{{payments}}">
-          <view class="weui-select weui-select_in-select-after">{{payments[paymentIndex]}}</view>
+      <input disabled="true" name="payment" value="{{payments[paymentIndex]['en']}}" style="display:none"/>
+      <picker bindchange="bindPaymentChange" value="paymentIndex" range-key="{{'cn'}}" range="{{payments}}">
+        <view class="weui-select weui-select_in-select-after">{{payments[paymentIndex]["cn"]}}</view>
       </picker>
     </view>
   </view>
@@ -42,14 +44,16 @@
   <view class="weui-cells__title">颜色</view>
   <view class="weui-cells weui-cells_after-title">
     <radio-group bindchange="radioChange">
-      <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+      <label class="weui-cell weui-check__label" wx:for="{{colorItems}}" wx:key="value">
+      <input style="display:none" disabled="true" name="color" wx:if="{{item.checked}}" value="{{item.name}}"/>
         <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
-
           <view class="weui-cell__bd">{{item.name}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
             <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
           </view>
+          
       </label>
+      
     </radio-group>
   </view>
 
@@ -58,6 +62,7 @@
       <view class="weui-label">功用</view>
     </view>
     <view class="weui-cell__bd">
+      <input style="display:none" disabled="true" name="usage" value="{{usages[usageIndex]}}"/>
       <picker bindchange="bindUsageChange" value="{{usageIndex}}" range="{{usages}}">
           <view class="weui-select weui-select_in-select-after">{{usages[usageIndex]}}</view>
       </picker>
@@ -69,6 +74,7 @@
       <view class="weui-label">尺寸</view>
     </view>
     <view class="weui-cell__bd">
+      <input style="display:none" disabled="true" name="size" value="{{sizes[sizeIndex]}}"/>
       <picker bindchange="bindSizeChange" value="{{sizeIndex}}" range="{{sizes}}">
           <view class="weui-select weui-select_in-select-after">{{sizes[sizeIndex]}}</view>
       </picker>
@@ -79,12 +85,12 @@
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell">
         <view class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="附加信息" style="height: 5.3em" />
+            <textarea name="note" class="weui-textarea" placeholder="附加信息" style="height: 5.3em" />
         </view>
     </view>
   </view>
 
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
   </view>
 </form>
