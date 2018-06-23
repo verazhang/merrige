@@ -12,21 +12,23 @@ Page({
 
     conditionItems: [],
 
-    listRoute: "goods/list",
+    listRoute: "goods/summary",
 
     colorShow: "block",
     usageShow: "block",
     sizeShow: "block",
 
-    listData: [{color:"black", usage:"xianti",size:"3XL",total:2}],
-    total: 0
+    listData: [],
+    total: 0,
+
+    page: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.fillList("");
+    this.fillList({});
   },
 
   /**
@@ -68,7 +70,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    console.log('up');
+    this.fillList({});
   },
 
   /**
@@ -78,17 +81,23 @@ Page({
   
   },
   fillList: function (formData) {
+    var that = this;
+    formData.p = that.data.page;
+    console.log(formData);
     wx.request({
       method: "GET",
-      url: app.globalData.domain + this.data.listRoute,
+      url: app.globalData.domain + that.data.listRoute,
       data: formData,
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.success) {
-          this.setData({listData: res.data.data});
+          that.setData({ 
+            listData: res.data.data, 
+            total: res.data.data.length
+            });
         }
         
       }
@@ -99,7 +108,15 @@ Page({
     var sourceData = this.data.conditionItems;
     sourceData.push(formData);
     this.setData({ conditionItems: sourceData});
-    
+
+    var items = this.data.conditionItems;
+    var listFormData = {};
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      listFormData[item.obj] = item.name;
+    }
+    this.fillList(listFormData);
+
     switch (formData.obj) {
       case "color":
         this.setData({colorShow: "none"});
@@ -124,6 +141,14 @@ Page({
     }
     this.setData({ conditionItems: sourceData });
 
+    var items = this.data.conditionItems;
+    var listFormData = {};
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      listFormData[item.obj] = item.name;
+    }
+    this.fillList(listFormData);
+    
     switch (delObj) {
       case "color":
         this.setData({ colorShow: "block" });

@@ -32,7 +32,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options);
+    var that = this;
+    var colorConf = that.data.colorItems;
+    if (options) {
+      switch (options.color) {
+        case "肤色":
+          colorConf[0]["checked"] = true;
+          colorConf[1]["checked"] = false;
+          that.setData({ colorItems: colorConf});
+        break;
+        case "黑色":
+          colorConf[0]["checked"] = false;
+          colorConf[1]["checked"] = true;
+          that.setData({ colorItems: colorConf });
+        break;
+      }
+      if (options.usage) {
+        var usageConf = that.data.usages;
+        for (var i = 0; i < usageConf.length; i++) {
+          if (usageConf[i] == options.usage) {
+            that.setData({usageIndex: i});
+            break;
+          }
+        }
+      }
+
+      if (options.size) {
+        var sizeConf = that.data.sizes;
+        for (var i = 0; i < sizeConf.length; i++) {
+          if (sizeConf[i] == options.size) {
+            that.setData({ sizeIndex: i });
+            break;
+          }
+        }
+      }
+    }
   },
 
   /**
