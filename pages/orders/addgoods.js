@@ -16,13 +16,15 @@ Page({
     
     addRoute: "goods/create",
     codehref: "",
+    uploadRoute: "goods/upload",
+    getucsRoute: "goods/getucs"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**
@@ -124,5 +126,78 @@ Page({
         });
       }
     });
+  },
+  chooseImage: function() {
+    var that = this;
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths
+        console.log(res);
+        wx.uploadFile({
+          url: app.globalData.domain + that.data.uploadRoute,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (res) {
+            var data = res.data;
+            console.log(res);
+            wx.request({
+              method: "GET",
+              url: app.globalData.domain + that.data.getucsRoute,
+              data: { name: data},
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data);
+                that.initForm(res.data.data);
+              }
+            });
+          }
+        })
+      }
+    })
+  },
+  initForm: function (options) {
+    var that = this;
+    var colorConf = that.data.colorItems;
+    if (options) {
+      switch (options.color) {
+        case "凝脂肤色":
+          colorConf[0]["checked"] = true;
+          colorConf[1]["checked"] = false;
+          that.setData({ colorItems: colorConf });
+          break;
+        case "黑色":
+          colorConf[0]["checked"] = false;
+          colorConf[1]["checked"] = true;
+          that.setData({ colorItems: colorConf });
+          break;
+      }
+      if (options.usage) {
+        var usageConf = that.data.usages;
+        for (var i = 0; i < usageConf.length; i++) {
+          if (usageConf[i] == options.usage) {
+            that.setData({ usageIndex: i });
+            break;
+          }
+        }
+      }
+      if (options.size) {
+        var sizeConf = that.data.sizes;
+        for (var i = 0; i < sizeConf.length; i++) {
+          if (sizeConf[i] == options.size) {
+            that.setData({ sizeIndex: i });
+            break;
+          }
+        }
+      }
+    }
   }
 })

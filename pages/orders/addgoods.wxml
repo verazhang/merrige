@@ -63,6 +63,10 @@
     </view>
   </view>
 
+<view class="weui-btn-area">
+    <button class="weui-btn" bindtap="chooseImage">货品信息拍照</button>
+  </view>
+
   <view class="weui-btn-area">
     <button class="weui-btn" type="primary" formType="submit">确定</button>
   </view>

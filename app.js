@@ -39,11 +39,12 @@ App({
       { name: '肤色', value: '0', checked: true },
       { name: '黑色', value: '1' }
     ],
-    usages: ["蚕茧", "纤体", "能量"],
+    usages: ["蚕茧", "科技塑身纤体衣", "能量"],
     usageIndex: 0,
 
     sizes: ["M", "L", "XL", "2XL", "3XL", "4XL"],
     sizeIndex: 0,
-    domain: "http://192.168.10.10/"//"http://119.27.163.89:8090/"
+    // domain: "http://192.168.10.10/"
+    domain: "http://119.27.163.89:8090/"
   }
 })
