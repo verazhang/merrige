@@ -8,6 +8,7 @@ Page({
   data: {
     colorItems: app.globalData.colorItems,
     
+    usagesfull: ["蚕茧", "科技塑身纤体衣", "能量", "无肩"],
     usages: app.globalData.usages,
     usageIndex: app.globalData.usageIndex,
 
@@ -181,7 +182,7 @@ Page({
           break;
       }
       if (options.usage) {
-        var usageConf = that.data.usages;
+        var usageConf = that.data.usagesfull;
         for (var i = 0; i < usageConf.length; i++) {
           if (usageConf[i] == options.usage) {
             that.setData({ usageIndex: i });

@@ -1,5 +1,9 @@
 <!--pages/orders/addgoods.wxml-->
 <form bindsubmit="formSubmit">
+  <view class="weui-btn-area">
+      <button class="weui-btn" bindtap="chooseImage">拍照识别货品</button>
+  </view>
+
   <view class="weui-cells__title">颜色</view>
   <view class="weui-cells weui-cells_after-title">
     <radio-group bindchange="radioChange">
@@ -61,10 +65,6 @@
     <view class="weui-cell__bd">
        <input name="codehref" value="{{codehref}}" /> 
     </view>
-  </view>
-
-<view class="weui-btn-area">
-    <button class="weui-btn" bindtap="chooseImage">货品信息拍照</button>
   </view>
 
   <view class="weui-btn-area">
