@@ -19,7 +19,7 @@ Page({
 
     colorItems: app.globalData.colorItems,
 
-    usages: app.globalData.usages,
+    usages: app.globalData.usagesfull,
     usageIndex: app.globalData.usageIndex,
 
     sizes: app.globalData.sizes,

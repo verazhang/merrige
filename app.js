@@ -39,6 +39,7 @@ App({
       { name: '肤色', value: '0', checked: true },
       { name: '黑色', value: '1' }
     ],
+    usagesfull: ["蚕茧", "科技塑身纤体衣", "能量", "无肩"],
     usages: ["蚕茧", "纤体", "能量", "无肩"],
     usageIndex: 0,
 
