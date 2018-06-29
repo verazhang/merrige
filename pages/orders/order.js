@@ -163,6 +163,7 @@ Page({
     }, 3000);
   },
   formSubmit: function (e) {
+    app.openLoading("保存中");
     // var that = this;
     var formData = e.detail.value; 
     formData.detail = { "color": formData.color, "usage": formData.usage, "size": formData.size};
@@ -175,7 +176,11 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
+        app.openLoading("保存成功");
+        wx.redirectTo({
+          url: '/pages/orders/order'
+        });
+        // console.log(res.data)
       }
     });
   }

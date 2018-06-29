@@ -102,8 +102,8 @@ Page({
     })
   },
   formSubmit: function (e) {
+    app.openLoading("保存中");
     var formData = e.detail.value; 
-    console.log(formData);
     wx.request({
       method: "POST",
       url: app.globalData.domain + this.data.addRoute,
@@ -112,7 +112,10 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+        app.hideToast();
+        wx.redirectTo({
+          url: '/pages/orders/addgoods'
+        });
       }
     });
   },
@@ -135,6 +138,7 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        app.openLoading("图片识别中", 6000);
         var tempFilePaths = res.tempFilePaths
         console.log(res);
         wx.uploadFile({
@@ -157,6 +161,7 @@ Page({
               success: function (res) {
                 console.log(res.data);
                 that.initForm(res.data.data);
+                app.hideToast();
               }
             });
           }

@@ -1,18 +1,34 @@
 // pages/orders/index.js
+var app = getApp(); 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    btnAddName: '添加'
+    getRoute: "report/order",
+    total: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    app.openLoading("数据加载中", 6000);
+    wx.request({
+      method: "GET",
+      url: app.globalData.domain + that.data.getRoute,
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({ total: res.data.data });
+        app.hideToast();
+      }
+    });
   },
 
   /**

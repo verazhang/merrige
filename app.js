@@ -47,5 +47,28 @@ App({
     sizeIndex: 0,
     // domain: "http://192.168.10.10/"
     domain: "http://119.27.163.89:8090/"
+  },
+  openToast: function (title, duration) {
+    wx.showToast({
+      title: title ? title : '已完成',
+      icon: 'success',
+      duration: duration ? duration : 3000
+    });
+  },
+  hideToast: function() {
+    wx.hideToast();
+  },
+  openLoading: function (title) {
+    // wx.showLoading({
+    //   title: title ? title : '加载中',
+    // });
+    wx.showToast({
+      title: title ? title : '数据加载中',
+      icon: 'loading',
+      duration: 3000
+    });
+  },
+  hideLoading: function() {
+    wx.hideLoading();
   }
 })
